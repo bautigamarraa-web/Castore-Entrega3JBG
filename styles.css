@@ -1,0 +1,39 @@
+/* Castore AR — estilos */
+:root{
+  --brand: #000;
+  --bg-hero: hsl(0 0% 98%);
+  --radius: 1.25rem;
+  --step-0: clamp(0.95rem, 0.30vw + 0.9rem, 1.05rem);
+  --step-1: clamp(1.10rem, 0.60vw + 1rem, 1.30rem);
+}
+body{ font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, sans-serif; }
+.tracking{ letter-spacing: .5px; }
+.w-lg-50{ width: 100%; }
+@media (min-width: 992px){ .w-lg-50{ width: 50%; } }
+
+.hero{
+  background: var(--bg-hero);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+.grid-prod{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1.25rem;
+}
+
+.card-img-top{ aspect-ratio: 3/2; object-fit: cover; }
+p, li{ font-size: var(--step-0); }
+h1, h2, h3{ letter-spacing: .2px; }
+
+:focus-visible{
+  outline: 3px solid color-mix(in hsl, #000, white 30%);
+  outline-offset: 2px;
+}
+
+.btn-dark{ --bs-btn-bg: #000; --bs-btn-border-color: #000; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
