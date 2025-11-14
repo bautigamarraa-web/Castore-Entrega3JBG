@@ -147,3 +147,24 @@ body{
     text-align:center;
   }
 }
+/* Buscador del header */
+.nav-search .input-group-text,
+.nav-search .form-control {
+  border-radius: 999px;
+  border-color: #ddd;
+  background-color: #fff;
+}
+
+.nav-search .form-control:focus {
+  box-shadow: none;
+  border-color: #000;
+}
+
+/* Badge del carrito en el header */
+.cart-count-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 0.65rem;
+  padding: 0.15rem 0.35rem;
+}
