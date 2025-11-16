@@ -3,287 +3,562 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Castore Argentina: indumentaria deportiva premium con envíos a todo el país." />
+  <title>Productos | Castore Argentina</title>
+
+  <meta name="description" content="Catálogo Castore Argentina: indumentaria deportiva técnica de fútbol, rugby y F1 con envíos a todo el país.">
+
   <link rel="icon" type="image/png" href="assets/logo-castore.png">
-  <title>Castore Argentina</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- Barra superior -->
+  <div class="topbar text-center text-white small">
+    ENVÍOS GRATIS EN COMPRAS SUPERIORES A ARS 120.000 · CAMBIOS FÁCILES EN TODO EL PAÍS
+  </div>
+
+  <!-- NAVBAR con buscador y carrito (mismo que en index/carrito) -->
   <header class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold tracking d-flex align-items-center gap-2" href="index.html">
-        <img src="assets/logo-castore.png" alt="Castore" height="28" width="28"> Castore Argentina
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/logo-castore.png" alt="Castore" height="28" width="28">
+        Castore Argentina
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#nav" aria-controls="nav" aria-expanded="false"
+              aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <nav class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+          <li class="nav-item"><a class="nav-link active" href="productos.html">Productos</a></li>
           <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
         </ul>
+
+        <!-- Buscador del header -->
+        <form class="d-none d-lg-block me-3" role="search">
+          <div class="input-group input-group-sm nav-search">
+            <span class="input-group-text border-end-0">
+              <i class="bi bi-search"></i>
+            </span>
+            <input id="navSearch" class="form-control border-start-0"
+                   type="search" placeholder="Search ..." aria-label="Buscar productos">
+          </div>
+        </form>
+
+        <!-- Botón carrito -->
+        <a href="carrito.html"
+           class="btn btn-outline-dark btn-sm rounded-pill position-relative">
+          <i class="bi bi-bag"></i>
+          <span class="d-none d-sm-inline ms-1">Carrito</span>
+          <span id="cartCount" class="badge bg-danger cart-count-badge" hidden>0</span>
+        </a>
       </nav>
     </div>
   </header>
-<main class="container py-5">
-  <header class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
-    <h1 class="h3 m-0">Catálogo Castore</h1>
-    <form class="d-flex gap-2" role="search" aria-label="Filtros de catálogo">
-      <input class="form-control" type="search" placeholder="Buscar prenda..." aria-label="Buscar">
-      <select class="form-select" aria-label="Filtrar por categoría">
-        <option selected>Todo</option>
-        <option>Abrigos</option><option>Remeras</option><option>Rugby</option><option>Fútbol</option><option>F1</option>
-      </select>
-      <button class="btn btn-dark" type="button">Filtrar</button>
-    </form>
-  </header>
-  <section class="grid-prod">
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">50% OFF</span>
-      </div>
-      <a href="producto-garcia-hoodie-navy.html" class="text-decoration-none text-reset">
-        <img src="assets/garcia-hoodie-navy.png" class="card-img-top" alt="Garcia 3.0 Hoodie – Azul Marino">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">Garcia 3.0 Hoodie – Azul Marino</h2>
-        <p class="small text-secondary m-0">Hoodie técnico con capucha, resistencia al agua y detalles reflectivos.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-garcia-hoodie-navy.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+
+  <main class="container py-5">
+    <header class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+      <h1 class="h3 m-0">Catálogo Castore</h1>
+
+      <!-- Buscador propio de la página de productos -->
+      <form class="d-flex gap-2" role="search" aria-label="Filtros de catálogo">
+        <input class="form-control"
+               type="search"
+               placeholder="Buscar prenda..."
+               aria-label="Buscar"
+               data-products-search>
+        <select class="form-select" aria-label="Filtrar por categoría">
+          <option selected>Todo</option>
+          <option>Abrigos</option>
+          <option>Remeras</option>
+          <option>Rugby</option>
+          <option>Fútbol</option>
+          <option>F1</option>
+        </select>
+        <button class="btn btn-dark" type="button">Filtrar</button>
+      </form>
+    </header>
+
+    <!-- Grilla de productos: el script.js usa data-products-grid -->
+    <section class="grid-prod" data-products-grid>
+
+      <!-- 1. Garcia Hoodie -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="garcia-hoodie-navy"
+               data-product-name="Garcia 3.0 Hoodie – Azul Marino"
+               data-product-price="125900"
+               data-product-img="assets/garcia-hoodie-navy.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">50% OFF</span>
+        </div>
+        <a href="producto-garcia-hoodie-navy.html" class="text-decoration-none text-reset">
+          <img src="assets/garcia-hoodie-navy.png"
+               class="card-img-top"
+               alt="Garcia 3.0 Hoodie – Azul Marino">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">Garcia 3.0 Hoodie – Azul Marino</h2>
+          <p class="small text-secondary m-0">
+            Hoodie técnico con capucha, resistencia al agua y detalles reflectivos.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-garcia-hoodie-navy.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 251.801</span>
             <span class="fw-bold">AR$ 125.900</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">40% OFF</span>
-      </div>
-      <a href="producto-zone-training-terra.html" class="text-decoration-none text-reset">
-        <img src="assets/zone-training-terra.png" class="card-img-top" alt="Zone Training Top – Terracota">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">Zone Training Top – Terracota</h2>
-        <p class="small text-secondary m-0">Top de entrenamiento manga larga, tejido elástico y respirable.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-zone-training-terra.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+      </article>
+
+      <!-- 2. Zone Training Top -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="zone-training-terra"
+               data-product-name="Zone Training Top – Terracota"
+               data-product-price="88130"
+               data-product-img="assets/zone-training-terra.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">40% OFF</span>
+        </div>
+        <a href="producto-zone-training-terra.html" class="text-decoration-none text-reset">
+          <img src="assets/zone-training-terra.png"
+               class="card-img-top"
+               alt="Zone Training Top – Terracota">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">Zone Training Top – Terracota</h2>
+          <p class="small text-secondary m-0">
+            Top de entrenamiento manga larga, tejido elástico y respirable.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-zone-training-terra.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 146.884</span>
             <span class="fw-bold">AR$ 88.130</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">30% OFF</span>
-      </div>
-      <a href="producto-mclaren-softshell.html" class="text-decoration-none text-reset">
-        <img src="assets/mclaren-softshell.png" class="card-img-top" alt="McLaren Softshell Team Jacket">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">McLaren Softshell Team Jacket</h2>
-        <p class="small text-secondary m-0">Softshell oficial del equipo McLaren. Rompeviento, repelente al agua.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-mclaren-softshell.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+      </article>
+
+      <!-- 3. McLaren Softshell -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="mclaren-softshell"
+               data-product-name="McLaren Softshell Team Jacket"
+               data-product-price="154228"
+               data-product-img="assets/mclaren-softshell.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">30% OFF</span>
+        </div>
+        <a href="producto-mclaren-softshell.html" class="text-decoration-none text-reset">
+          <img src="assets/mclaren-softshell.png"
+               class="card-img-top"
+               alt="McLaren Softshell Team Jacket">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">McLaren Softshell Team Jacket</h2>
+          <p class="small text-secondary m-0">
+            Softshell oficial del equipo McLaren. Rompeviento, repelente al agua.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-mclaren-softshell.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 220.326</span>
             <span class="fw-bold">AR$ 154.228</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">30% OFF</span>
-      </div>
-      <a href="producto-westham-away-2425.html" class="text-decoration-none text-reset">
-        <img src="assets/westham-away-2425.png" class="card-img-top" alt="West Ham 24/25 Away Jersey">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">West Ham 24/25 Away Jersey</h2>
-        <p class="small text-secondary m-0">Camiseta alternativa 24/25 del West Ham. Tejido ligero y ventilado.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-westham-away-2425.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+      </article>
+
+      <!-- 4. West Ham Away -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="westham-away-2425"
+               data-product-name="West Ham 24/25 Away Jersey"
+               data-product-price="86730"
+               data-product-img="assets/westham-away-2425.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">30% OFF</span>
+        </div>
+        <a href="producto-westham-away-2425.html" class="text-decoration-none text-reset">
+          <img src="assets/westham-away-2425.png"
+               class="card-img-top"
+               alt="West Ham 24/25 Away Jersey">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">West Ham 24/25 Away Jersey</h2>
+          <p class="small text-secondary m-0">
+            Camiseta alternativa 24/25 del West Ham. Tejido ligero y ventilado.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-westham-away-2425.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 123.900</span>
             <span class="fw-bold">AR$ 86.730</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">25% OFF</span>
-      </div>
-      <a href="producto-preston-home-2526.html" class="text-decoration-none text-reset">
-        <img src="assets/preston-home-2526.png" class="card-img-top" alt="Preston 25/26 Home Shirt">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">Preston 25/26 Home Shirt</h2>
-        <p class="small text-secondary m-0">Camiseta titular Preston North End 25/26. Corte regular.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-preston-home-2526.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+      </article>
+
+      <!-- 5. Preston Home -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="preston-home-2526"
+               data-product-name="Preston 25/26 Home Shirt"
+               data-product-price="82500"
+               data-product-img="assets/preston-home-2526.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">25% OFF</span>
+        </div>
+        <a href="producto-preston-home-2526.html" class="text-decoration-none text-reset">
+          <img src="assets/preston-home-2526.png"
+               class="card-img-top"
+               alt="Preston 25/26 Home Shirt">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">Preston 25/26 Home Shirt</h2>
+          <p class="small text-secondary m-0">
+            Camiseta titular Preston North End 25/26. Corte regular.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-preston-home-2526.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 110.000</span>
             <span class="fw-bold">AR$ 82.500</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">35% OFF</span>
-      </div>
-      <a href="producto-redbull-max-tee.html" class="text-decoration-none text-reset">
-        <img src="assets/redbull-max-tee.png" class="card-img-top" alt="Red Bull Max Verstappen Teamline Tee">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">Red Bull Max Verstappen Teamline Tee</h2>
-        <p class="small text-secondary m-0">Remera oficial Max Verstappen Teamline. Algodón premium.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-redbull-max-tee.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+      </article>
+
+      <!-- 6. Red Bull Max Tee -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="redbull-max-tee"
+               data-product-name="Red Bull Max Verstappen Teamline Tee"
+               data-product-price="57850"
+               data-product-img="assets/redbull-max-tee.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">35% OFF</span>
+        </div>
+        <a href="producto-redbull-max-tee.html" class="text-decoration-none text-reset">
+          <img src="assets/redbull-max-tee.png"
+               class="card-img-top"
+               alt="Red Bull Max Verstappen Teamline Tee">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">Red Bull Max Verstappen Teamline Tee</h2>
+          <p class="small text-secondary m-0">
+            Remera oficial Max Verstappen Teamline. Algodón premium.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-redbull-max-tee.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 89.000</span>
             <span class="fw-bold">AR$ 57.850</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">20% OFF</span>
-      </div>
-      <a href="producto-alpine-core-polo.html" class="text-decoration-none text-reset">
-        <img src="assets/alpine-core-polo.png" class="card-img-top" alt="Alpine Core Essentials Polo">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">Alpine Core Essentials Polo</h2>
-        <p class="small text-secondary m-0">Polo Essentials Alpine. Tela suave con elasticidad.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-alpine-core-polo.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+      </article>
+
+      <!-- 7. Alpine Core Polo -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="alpine-core-polo"
+               data-product-name="Alpine Core Essentials Polo"
+               data-product-price="61520"
+               data-product-img="assets/alpine-core-polo.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">20% OFF</span>
+        </div>
+        <a href="producto-alpine-core-polo.html" class="text-decoration-none text-reset">
+          <img src="assets/alpine-core-polo.png"
+               class="card-img-top"
+               alt="Alpine Core Essentials Polo">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">Alpine Core Essentials Polo</h2>
+          <p class="small text-secondary m-0">
+            Polo Essentials Alpine. Tela suave con elasticidad.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-alpine-core-polo.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 76.900</span>
             <span class="fw-bold">AR$ 61.520</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">20% OFF</span>
-      </div>
-      <a href="producto-alpine-colapinto-tee.html" class="text-decoration-none text-reset">
-        <img src="assets/alpine-colapinto-tee.png" class="card-img-top" alt="Alpine Franco Colapinto Tee – Ice Blue">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">Alpine Franco Colapinto Tee – Ice Blue</h2>
-        <p class="small text-secondary m-0">Edición Alpine Driver Franco Colapinto. Calce relajado.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-alpine-colapinto-tee.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+      </article>
+
+      <!-- 8. Alpine Franco Colapinto Tee -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="alpine-colapinto-tee"
+               data-product-name="Alpine Franco Colapinto Tee – Ice Blue"
+               data-product-price="52720"
+               data-product-img="assets/alpine-colapinto-tee.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">20% OFF</span>
+        </div>
+        <a href="producto-alpine-colapinto-tee.html" class="text-decoration-none text-reset">
+          <img src="assets/alpine-colapinto-tee.png"
+               class="card-img-top"
+               alt="Alpine Franco Colapinto Tee – Ice Blue">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">Alpine Franco Colapinto Tee – Ice Blue</h2>
+          <p class="small text-secondary m-0">
+            Edición Alpine Driver Franco Colapinto. Calce relajado.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-alpine-colapinto-tee.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 65.900</span>
             <span class="fw-bold">AR$ 52.720</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">40% OFF</span>
-      </div>
-      <a href="producto-england-rugby-alt-ls.html" class="text-decoration-none text-reset">
-        <img src="assets/england-rugby-alt-ls.png" class="card-img-top" alt="England Rugby Alternate Classic LS">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">England Rugby Alternate Classic LS</h2>
-        <p class="small text-secondary m-0">Camiseta rugby England alternate, manga larga, tejido resistente.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-england-rugby-alt-ls.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+      </article>
+
+      <!-- 9. England Rugby Alternate LS -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="england-rugby-alt-ls"
+               data-product-name="England Rugby Alternate Classic LS"
+               data-product-price="95940"
+               data-product-img="assets/england-rugby-alt-ls.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">40% OFF</span>
+        </div>
+        <a href="producto-england-rugby-alt-ls.html" class="text-decoration-none text-reset">
+          <img src="assets/england-rugby-alt-ls.png"
+               class="card-img-top"
+               alt="England Rugby Alternate Classic LS">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">England Rugby Alternate Classic LS</h2>
+          <p class="small text-secondary m-0">
+            Camiseta rugby England alternate, manga larga, tejido resistente.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-england-rugby-alt-ls.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 159.900</span>
             <span class="fw-bold">AR$ 95.940</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">30% OFF</span>
-      </div>
-      <a href="producto-mclaren-waterproof.html" class="text-decoration-none text-reset">
-        <img src="assets/mclaren-waterproof.png" class="card-img-top" alt="McLaren Waterproof Rain Jacket">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">McLaren Waterproof Rain Jacket</h2>
-        <p class="small text-secondary m-0">Chaqueta impermeable oficial McLaren, capucha ajustable.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-mclaren-waterproof.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+      </article>
+
+      <!-- 10. McLaren Waterproof -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="mclaren-waterproof"
+               data-product-name="McLaren Waterproof Rain Jacket"
+               data-product-price="122500"
+               data-product-img="assets/mclaren-waterproof.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">30% OFF</span>
+        </div>
+        <a href="producto-mclaren-waterproof.html" class="text-decoration-none text-reset">
+          <img src="assets/mclaren-waterproof.png"
+               class="card-img-top"
+               alt="McLaren Waterproof Rain Jacket">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">McLaren Waterproof Rain Jacket</h2>
+          <p class="small text-secondary m-0">
+            Chaqueta impermeable oficial McLaren, capucha ajustable.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-mclaren-waterproof.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 175.000</span>
             <span class="fw-bold">AR$ 122.500</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">25% OFF</span>
-      </div>
-      <a href="producto-saracens-training-tee.html" class="text-decoration-none text-reset">
-        <img src="assets/saracens-training-tee.png" class="card-img-top" alt="Saracens 25/26 Training Tee – Red">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">Saracens 25/26 Training Tee – Red</h2>
-        <p class="small text-secondary m-0">Remera de entrenamiento Saracens 25/26. Secado rápido.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-saracens-training-tee.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+      </article>
+
+      <!-- 11. Saracens Training Tee -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="saracens-training-tee"
+               data-product-name="Saracens 25/26 Training Tee – Red"
+               data-product-price="82425"
+               data-product-img="assets/saracens-training-tee.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">25% OFF</span>
+        </div>
+        <a href="producto-saracens-training-tee.html" class="text-decoration-none text-reset">
+          <img src="assets/saracens-training-tee.png"
+               class="card-img-top"
+               alt="Saracens 25/26 Training Tee – Red">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">Saracens 25/26 Training Tee – Red</h2>
+          <p class="small text-secondary m-0">
+            Remera de entrenamiento Saracens 25/26. Secado rápido.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-saracens-training-tee.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 109.900</span>
             <span class="fw-bold">AR$ 82.425</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-    <article class="prod card shadow-sm position-relative">
-      <div class="badge-sale">
-        SALE <span class="badge-percent">15% OFF</span>
-      </div>
-      <a href="producto-paul-smith-hoodie.html" class="text-decoration-none text-reset">
-        <img src="assets/paul-smith-hoodie.png" class="card-img-top" alt="Paul Smith x Castore Hoodie">
-      </a>
-      <div class="card-body d-flex flex-column gap-1">
-        <h2 class="h6 m-0">Paul Smith x Castore Hoodie</h2>
-        <p class="small text-secondary m-0">Colaboración Paul Smith x Castore. Detalles premium.</p>
-        <div class="d-flex justify-content-between align-items-center mt-2">
-          <a href="producto-paul-smith-hoodie.html" class="btn btn-outline-dark btn-sm">Ver</a>
-          <div class="d-flex flex-column text-end">
+      </article>
+
+      <!-- 12. Paul Smith x Castore Hoodie -->
+      <article class="prod card shadow-sm position-relative"
+               data-product-id="paul-smith-hoodie"
+               data-product-name="Paul Smith x Castore Hoodie"
+               data-product-price="254150"
+               data-product-img="assets/paul-smith-hoodie.png">
+        <div class="badge-sale">
+          SALE <span class="badge-percent">15% OFF</span>
+        </div>
+        <a href="producto-paul-smith-hoodie.html" class="text-decoration-none text-reset">
+          <img src="assets/paul-smith-hoodie.png"
+               class="card-img-top"
+               alt="Paul Smith x Castore Hoodie">
+        </a>
+        <div class="card-body d-flex flex-column gap-1">
+          <h2 class="h6 m-0">Paul Smith x Castore Hoodie</h2>
+          <p class="small text-secondary m-0">
+            Colaboración Paul Smith x Castore. Detalles premium.
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <a href="producto-paul-smith-hoodie.html"
+               class="btn btn-outline-dark btn-sm">
+              Ver
+            </a>
+            <button type="button"
+                    class="btn btn-dark btn-sm"
+                    data-add-to-cart-auto>
+              Añadir
+            </button>
+          </div>
+
+          <div class="d-flex flex-column text-end mt-2">
             <span class="text-decoration-line-through text-secondary small">AR$ 299.000</span>
             <span class="fw-bold">AR$ 254.150</span>
           </div>
         </div>
-      </div>
-    </article>
-    
-  </section>
-</main>
+      </article>
+
+    </section>
+  </main>
+
   <footer class="mt-5 border-top py-4 bg-light">
     <div class="container d-flex flex-column flex-lg-row justify-content-between gap-3">
       <p class="mb-0 small">© <span id="year"></span> Castore Argentina.</p>
@@ -293,6 +568,7 @@
       </ul>
     </div>
   </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>

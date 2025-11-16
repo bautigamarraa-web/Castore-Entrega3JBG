@@ -40,13 +40,22 @@
     </ol>
   </nav>
 
-  <div class="row g-4">
+  <!-- AGREGO data-product-* EN EL CONTENEDOR -->
+  <div class="row g-4"
+       data-product-id="mclaren-softshell"
+       data-product-name="McLaren Softshell Team Jacket"
+       data-product-price="154228"
+       data-product-img="assets/mclaren-softshell.png">
+
     <div class="col-12 col-lg-6 position-relative">
       <div class="badge-sale">
         SALE <span class="badge-percent">30% OFF</span>
       </div>
-      <img src="assets/mclaren-softshell.png" alt="McLaren Softshell Team Jacket" class="w-100 rounded shadow-sm">
+      <img src="assets/mclaren-softshell.png"
+           alt="McLaren Softshell Team Jacket"
+           class="w-100 rounded shadow-sm">
     </div>
+
     <div class="col-12 col-lg-6">
       <h1 class="h3">McLaren Softshell Team Jacket</h1>
       <p class="text-secondary">Softshell oficial del equipo McLaren. Rompeviento, repelente al agua.</p>
@@ -59,7 +68,14 @@
         <li><span class="badge text-bg-dark">F1</span></li>
         <li><span class="badge text-bg-dark">Chaqueta</span></li>
       </ul>
-      <button class="btn btn-dark btn-lg">Añadir al carrito</button>
+
+      <!-- BOTÓN CORRECTO PARA EL SCRIPT AUTOMÁTICO -->
+      <button class="btn btn-dark btn-lg"
+              type="button"
+              data-add-to-cart-auto>
+        Añadir al carrito
+      </button>
+
       <hr class="my-4">
       <h2 class="h5">Detalles</h2>
       <ul>
@@ -71,6 +87,7 @@
     </div>
   </div>
 </main>
+
   <footer class="mt-5 border-top py-4 bg-light">
     <div class="container d-flex flex-column flex-lg-row justify-content-between gap-3">
       <p class="mb-0 small">© <span id="year"></span> Castore Argentina.</p>
