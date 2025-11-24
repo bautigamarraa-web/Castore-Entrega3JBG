@@ -34,7 +34,10 @@
   const getCartCount = () =>
     getCart().reduce((sum, item) => sum + (item.quantity || 1), 0);
 
-  const cartBadge = document.getElementById("cartCount");
+  const cartBadge =
+  document.getElementById("cartCount") ||
+  document.getElementById("cart-count");
+
 
   const refreshCartBadge = () => {
     if (!cartBadge) return;
@@ -159,44 +162,74 @@
     }
   }
 
-  // -----------------------------
-  // Buscador en productos.html
-  // -----------------------------
-  function initProductsSearch() {
-    const grid = document.querySelector("[data-products-grid]");
-    if (!grid) return;
+// -----------------------------
+// Buscador en productos.html
+// -----------------------------
+function initProductsSearch() {
+  const grid = document.querySelector("[data-products-grid]");
+  if (!grid) return;
 
-    const cards = Array.from(grid.querySelectorAll("[data-product-id]"));
-    const searchInput = document.querySelector("[data-products-search]");
+  const cards = Array.from(grid.querySelectorAll("[data-product-id]"));
+  const searchInput = document.querySelector("[data-products-search]");
+  const categorySelect = document.querySelector(
+    'select[aria-label="Filtrar por categoría"]'
+  );
 
-    const params = new URLSearchParams(window.location.search);
-    const initialQ = params.get("q") || "";
+  // Categoría asignada según el id del producto
+  const CATEGORY_BY_ID = {
+    "garcia-hoodie-navy": "Abrigos",
+    "zone-training-terra": "Remeras",
+    "mclaren-softshell": "F1",
+    "westham-away-2425": "Fútbol",
+    "preston-home-2526": "Fútbol",
+    "redbull-max-tee": "F1",
+    "alpine-core-polo": "F1",
+    "alpine-colapinto-tee": "F1",
+    "england-rugby-alt-ls": "Rugby",
+    "mclaren-waterproof": "F1",
+    "saracens-training-tee": "Rugby",
+    "paul-smith-hoodie": "Abrigos",
+  };
 
-    const applyFilter = (term) => {
-      const t = term.toLowerCase();
-      cards.forEach((card) => {
-        const name = (card.dataset.productName || "").toLowerCase();
-        const text = card.innerText.toLowerCase();
-        card.style.display =
-          !t || name.includes(t) || text.includes(t) ? "" : "none";
-      });
-    };
+  const params = new URLSearchParams(window.location.search);
+  const initialQ = params.get("q") || "";
 
-    if (searchInput) {
-      searchInput.value = initialQ;
-      searchInput.addEventListener("input", (e) =>
-        applyFilter(e.target.value)
-      );
-    }
+  const applyFilter = () => {
+    const term = (searchInput?.value || "").toLowerCase();
+    const selectedCat = categorySelect?.value || "Todo";
 
-    if (initialQ) applyFilter(initialQ);
+    cards.forEach((card) => {
+      const name = (card.dataset.productName || "").toLowerCase();
+      const text = card.innerText.toLowerCase();
+      const id = card.dataset.productId;
+      const cardCat = CATEGORY_BY_ID[id] || "Todo";
+
+      const matchesText =
+        !term || name.includes(term) || text.includes(term);
+      const matchesCat =
+        selectedCat === "Todo" || cardCat === selectedCat;
+
+      card.style.display = matchesText && matchesCat ? "" : "none";
+    });
+  };
+
+  if (searchInput) {
+    searchInput.value = initialQ;
+    searchInput.addEventListener("input", applyFilter);
   }
 
-  // -----------------------------
-  // Init general
-  // -----------------------------
-  refreshCartBadge();
-  wireAutoCartButtons();
-  renderCartPage();
-  initProductsSearch();
+  if (categorySelect) {
+    categorySelect.addEventListener("change", applyFilter);
+  }
+
+  // Aplica filtros al cargar (incluye ?q= de la URL)
+  applyFilter();
+}
+// -----------------------------
+// Init general
+// -----------------------------
+refreshCartBadge();
+wireAutoCartButtons();
+renderCartPage();
+initProductsSearch();
 })();
