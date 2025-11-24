@@ -1,124 +1,219 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Castore Argentina | Colección Oficial</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Castore Argentina | Colección Oficial</title>
 
-  <!-- Ícono y estilos -->
-  <link rel="icon" type="image/png" href="assets/logo-castore.png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- Barra superior negra -->
-  <div class="topbar text-center text-white small">
-    ENVÍOS GRATIS EN COMPRAS SUPERIORES A ARS 120.000 · CAMBIOS FÁCILES EN TODO EL PAÍS
-  </div>
+    <!-- Bootstrap Icons (para el ícono de búsqueda, carrito, etc.) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
 
-  <!-- NAVBAR CON BUSCADOR Y CARRITO -->
-  <header class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-sm">
-    <div class="container">
-      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
-        <img src="assets/logo-castore.png" alt="Castore" height="28" width="28">
-        Castore Argentina
-      </a>
+    <!-- Tu CSS compilado desde SASS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Barra superior de envío -->
+    <div class="topbar text-center text-white">
+      <div class="container">
+        ENVÍOS GRATIS EN COMPRAS SUPERIORES A ARS 120.000 · CAMBIOS FÁCILES EN
+        TODO EL PAÍS
+      </div>
+    </div>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#nav" aria-controls="nav" aria-expanded="false"
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <nav class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
-          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
-        </ul>
-
-        <!-- Buscador del header -->
-        <form class="d-none d-lg-block me-3" role="search">
-          <div class="input-group input-group-sm nav-search">
-            <span class="input-group-text border-end-0">
-              <i class="bi bi-search"></i>
+    <!-- NAVBAR -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <!-- Brand -->
+          <a
+            class="navbar-brand d-flex align-items-center gap-2"
+            href="index.html"
+          >
+            <img
+              src="img/logo-castore.png"
+              alt="Logo Castore"
+              width="32"
+              height="32"
+            />
+            <span class="fw-semibold small text-uppercase">
+              Castore Argentina
             </span>
-            <input id="navSearch" class="form-control border-start-0"
-                   type="search" placeholder="Search ..." aria-label="Buscar productos">
+          </a>
+
+          <!-- Toggler mobile -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+            aria-controls="mainNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Links + búsqueda + carrito -->
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-lg-3">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="productos.html">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contacto.html">Contacto</a>
+              </li>
+            </ul>
+
+            <!-- Buscador de cabecera -->
+            <form
+              class="d-none d-md-flex me-3"
+              role="search"
+              onsubmit="return false;"
+            >
+              <div class="input-group nav-search">
+                <span class="input-group-text border-0">
+                  <i class="bi bi-search"></i>
+                </span>
+                <input
+                  class="form-control border-0"
+                  type="search"
+                  placeholder="Buscar..."
+                  aria-label="Buscar"
+                />
+              </div>
+            </form>
+
+            <!-- Carrito -->
+            <a
+              href="carrito.html"
+              class="btn btn-outline-dark btn-sm position-relative"
+            >
+              <i class="bi bi-bag me-1"></i>
+              Carrito
+              <span
+                id="cart-count"
+                class="badge bg-danger rounded-pill cart-count-badge"
+                >0</span
+              >
+            </a>
           </div>
-        </form>
-
-        <!-- Botón carrito -->
-        <a href="carrito.html"
-           class="btn btn-outline-dark btn-sm rounded-pill position-relative">
-          <i class="bi bi-bag"></i>
-          <span class="d-none d-sm-inline ms-1">Carrito</span>
-          <span id="cartCount" class="badge bg-danger cart-count-badge" hidden>0</span>
-        </a>
+        </div>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <!-- HERO PRINCIPAL (puede ser distinto al tuyo, lo podés ajustar luego) -->
-  <main>
-    <section class="hero-landing">
-      <div class="hero-media">
-        <div class="hero-media-left">
-          <img src="assets/garcia-hoodie-navy.png" alt="Garcia Hoodie Castore Argentina">
+    <main>
+      <!-- HERO principal -->
+      <section class="hero-landing">
+        <div class="hero-media">
+          <!-- Imagen izquierda -->
+          <div class="hero-media-left">
+            <!-- Usá acá tu imagen recortada de la campera Garcia Hoodie -->
+            <img
+              src="img/hero-garcia-hoodie.jpg"
+              alt="Garcia 3.0 Hoodie Castore"
+            />
+          </div>
+
+          <!-- Imagen derecha (se oculta en mobile si querés) -->
+          <div class="hero-media-right d-none d-sm-block">
+            <!-- Usá acá tu imagen recortada del Alpine Core Polo -->
+            <img
+              src="img/hero-alpine-polo.jpg"
+              alt="Alpine Core Essentials Polo"
+            />
+          </div>
         </div>
-        <div class="hero-media-right">
-          <img src="assets/alpine-core-polo.png" alt="Polo Alpine Castore Argentina">
+
+        <!-- Overlay de texto -->
+        <div class="hero-overlay container">
+          <p class="hero-eyebrow">Archivo Castore · Argentina</p>
+          <h1 class="hero-title">La colección que cuenta.</h1>
+          <p class="hero-subtitle">
+            Indumentaria técnica para hinchas de fútbol, rugby y Fórmula 1.
+            Diseñada para entrenar, competir y vivir el día a día con estilo.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2">
+            <a
+              href="productos.html"
+              class="btn btn-light btn-pill text-dark fw-semibold"
+            >
+              Ver catálogo
+            </a>
+            <a
+              href="productos.html#ofertas"
+              class="btn btn-outline-light btn-pill fw-semibold"
+            >
+              Ver ofertas
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 columnas de beneficios -->
+      <section class="home-highlights bg-white">
+        <div class="container py-5">
+          <div class="row g-4">
+            <div class="col-12 col-md-4 highlight">
+              <h2>Rendimiento</h2>
+              <p>
+                Tejidos livianos, respirables y de secado rápido para entrenar
+                sin límites.
+              </p>
+            </div>
+            <div class="col-12 col-md-4 highlight">
+              <h2>Equipos oficiales</h2>
+              <p>
+                Modelos inspirados en clubes y escuderías internacionales. La
+                misma tecnología que usan los profesionales.
+              </p>
+            </div>
+            <div class="col-12 col-md-4 highlight">
+              <h2>Envíos a todo el país</h2>
+              <p>
+                Comprá online y recibí tu pedido en cualquier provincia de
+                Argentina.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-top py-3">
+      <div
+        class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2"
+      >
+        <span class="text-muted-sm">© 2025 Castore Argentina.</span>
+        <div class="d-flex gap-3 text-muted-sm">
+          <a href="#" class="text-decoration-none text-muted-sm">Privacidad</a>
+          <a href="#" class="text-decoration-none text-muted-sm">Términos</a>
         </div>
       </div>
+    </footer>
 
-      <div class="hero-overlay container">
-        <p class="hero-eyebrow">Archivo Castore · Argentina</p>
-        <h1 class="hero-title">La colección que cuenta.</h1>
-        <p class="hero-subtitle">
-          Indumentaria técnica para hinchas de fútbol, rugby y Fórmula 1.
-          Diseñada para entrenar, competir y vivir el día a día con estilo.
-        </p>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
 
-        <div class="d-flex flex-wrap gap-3 mt-3">
-          <a href="productos.html" class="btn btn-light btn-lg px-4">Ver catálogo</a>
-          <a href="productos.html" class="btn btn-outline-light btn-lg px-4">Ver ofertas</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="container py-5">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <h2 class="h5">Rendimiento</h2>
-          <p class="small text-secondary">Tejidos livianos, respirables y de secado rápido para entrenar sin límites.</p>
-        </div>
-        <div class="col-md-4">
-          <h2 class="h5">Equipos oficiales</h2>
-          <p class="small text-secondary">Modelos inspirados en clubes y escuderías internacionales.</p>
-        </div>
-        <div class="col-md-4">
-          <h2 class="h5">Envíos a todo el país</h2>
-          <p class="small text-secondary">Comprá online y recibí tu pedido en cualquier provincia de Argentina.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="mt-5 border-top py-4 bg-light">
-    <div class="container d-flex flex-column flex-lg-row justify-content-between gap-3">
-      <p class="mb-0 small">© <span id="year"></span> Castore Argentina.</p>
-      <ul class="list-inline mb-0 small">
-        <li class="list-inline-item"><a href="#" class="link-body-emphasis">Privacidad</a></li>
-        <li class="list-inline-item"><a href="#" class="link-body-emphasis">Términos</a></li>
-      </ul>
-    </div>
-  </footer>
-
-  <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
-</body>
+    <!-- Tu script de carrito/búsqueda -->
+    <script src="script.js"></script>
+  </body>
 </html>
