@@ -1,0 +1,182 @@
+@import "variables";
+@import "mixins";
+
+/* v3.4 styles – ahora en SASS */
+
+/* Opcional: seguir exponiendo las CSS custom properties si querés */
+:root {
+  --brand: #{$brand};
+  --bg-hero: #{$bg-hero};
+  --radius: #{$radius-card};
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Arial, sans-serif;
+}
+
+/* Barra superior */
+.topbar {
+  background: $brand;
+  padding: 0.4rem 1rem;
+  letter-spacing: 0.06em;
+}
+
+/* Hero estilo Castore */
+.hero-landing {
+  position: relative;
+  min-height: 75vh;
+  color: #fff;
+  background: $bg-hero;
+  overflow: hidden;
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.hero-media-left,
+.hero-media-right {
+  flex: 1;
+}
+
+.hero-media-left img,
+.hero-media-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Degradado oscuro encima de las fotos */
+.hero-landing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.7) 40%,
+    rgba(0, 0, 0, 0.35) 65%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 1;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 4vw, 3.6rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.hero-subtitle {
+  max-width: 32rem;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+/* Grilla de productos */
+.grid-prod {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1.25rem;
+}
+
+.card-img-top {
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in hsl, #000, white 30%);
+  outline-offset: 2px;
+}
+
+/* Botón oscuro – ahora usa placeholder de SASS */
+.btn-dark {
+  @extend %btn-base;
+  --bs-btn-bg: #{$brand};
+  --bs-btn-border-color: #{$brand};
+}
+
+/* Badges de descuento */
+.badge-sale {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: $badge-sale;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  z-index: 10;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.badge-percent {
+  background: $badge-percent;
+  margin-left: 8px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Responsive hero */
+@media (max-width: 768px) {
+  .hero-media {
+    flex-direction: column;
+  }
+  .hero-landing::before {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.7) 40%,
+      rgba(0, 0, 0, 0.9) 100%
+    );
+  }
+  .hero-overlay {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Buscador del header – usa mixin rounded-pill */
+.nav-search .input-group-text,
+.nav-search .form-control {
+  @include rounded-pill;
+  border-color: #ddd;
+  background-color: #fff;
+}
+
+.nav-search .form-control:focus {
+  box-shadow: none;
+  border-color: $brand;
+}
+
+/* Badge del carrito en el header */
+.cart-count-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 0.65rem;
+  padding: 0.15rem 0.35rem;
+}

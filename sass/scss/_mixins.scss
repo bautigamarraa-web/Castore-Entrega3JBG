@@ -1,0 +1,14 @@
+@import "variables";
+
+// Placeholder para base de botones
+%btn-base {
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+// Mixin para redondear como píldora
+@mixin rounded-pill {
+  border-radius: 999px;
+}

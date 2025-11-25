@@ -1,0 +1,94 @@
+// Variables de colores y medidas globales para el proyecto
+// Colores primarios / marcas
+$brand: #000;
+$brand-contrast: #fff;
+
+// Fondo / Hero
+$bg-hero: #111;
+$bg-page: #f8f8f8;
+$bg-surface: #ffffff;
+
+// Badges / acciones
+$badge-sale: #e60023;
+$badge-percent: #ff9100;
+$badge-success: #00a86b;
+$badge-info: #007bff;
+
+// Neutrales / text
+$color-text: #222;
+$color-muted: #6b6b6b;
+$color-border: #e6e6e6;
+$color-ghost: rgba(0,0,0,0.04);
+
+// Sombras y radios
+$radius-small: 0.375rem; // 6px
+$radius-regular: 0.75rem; // 12px
+$radius-card: 1.25rem; // 20px (ya definido)
+$shadow-xs: 0 1px 2px rgba(16,24,40,0.04);
+$shadow-sm: 0 4px 10px rgba(16,24,40,0.06);
+$shadow-md: 0 8px 30px rgba(16,24,40,0.08);
+
+// Tipografía
+$font-family-sans: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-mono: "SFMono-Regular", Menlo, Monaco, "Roboto Mono", monospace;
+
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.875rem; // 14px
+$font-size-md: 1rem; // 16px
+$font-size-lg: 1.125rem; // 18px
+$font-size-xl: 1.25rem; // 20px
+$font-size-xxl: 1.5rem; // 24px
+
+$line-height-tight: 1.15;
+$line-height-normal: 1.5;
+
+// Espaciado (scale)
+$space-xxs: 0.25rem; //4px
+$space-xs: 0.5rem; //8px
+$space-sm: 0.75rem; //12px
+$space-md: 1rem; //16px
+$space-lg: 1.5rem; //24px
+$space-xl: 2rem; //32px
+
+// Layout / breakpoints
+$site-max-width: 1200px;
+$container-padding: $space-md;
+
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// Z-index
+$z-below: 0;
+$z-default: 10;
+$z-fixed: 50;
+$z-modal: 1000;
+
+// Transiciones
+$ease-default: cubic-bezier(.4,0,.2,1);
+$transition-fast: 150ms $ease-default;
+$transition-default: 300ms $ease-default;
+
+// Mapas utilitarios
+$colors: (
+    brand: $brand,
+    bg-hero: $bg-hero,
+    bg-page: $bg-page,
+    surface: $bg-surface,
+    text: $color-text,
+    muted: $color-muted,
+    border: $color-border,
+    sale: $badge-sale,
+    percent: $badge-percent,
+    success: $badge-success,
+    info: $badge-info
+);
+
+// Helper mixin para breakpoint
+@mixin bp($point) {
+    @if $point == sm { @media (min-width: $breakpoint-sm) { @content; } }
+    @else if $point == md { @media (min-width: $breakpoint-md) { @content; } }
+    @else if $point == lg { @media (min-width: $breakpoint-lg) { @content; } }
+    @else if $point == xl { @media (min-width: $breakpoint-xl) { @content; } }
+}
